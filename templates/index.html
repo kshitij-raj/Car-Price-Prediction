@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type = "text/javascript" src="/static/function.js"></script>
+    <title>Car Price Prediction</title>
+    <link rel = "icon" href = "/static/sport-car.png" type = "image/x-icon">
+        
+</head>
+
+<body>
+    <div class="background">
+        <div class="heading">
+            <h1 style="font-size:50px">Car Price Prediction</h1>
+            <h3 style="font-family:Papyrus">Predict your old car price according to your car features.</h3>
+        </div>
+        <div class="form">
+            <div class="car-body">
+                <form action="{{ url_for('predict')}}" method="post">
+                    <div class="form-group">
+                        <label>Manufacturing Year</label><br>
+                        <input id="first" class="form-control" name="Year" placeholder="Enter year" type="number ">
+                    </div> 
+                    <br>
+                    <div class="form-group">
+                        <label>Showroom Price</label><br>
+                        <input id="second" class="form-control" name="Present_Price" placeholder="Enter Price" required="required">
+                    </div>
+                    <br>
+    
+                    <div class="form-group">
+                        <label>Kilometers Driven</label><br>
+                        <input id="third" name="Kms_Driven" class="form-control" placeholder="Enter Kilometers driven" required="required">
+                    </div>
+                    <br>
+    
+                    <div class="form-group">
+                        <label>How many owners the car had?</label><br>
+                        <select name="Owner" id="fourth" class="form-control" required="required">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Dealer or Individual?</label><br>
+                        <select name="Seller_Type_Individual" id="resea" class="form-control" required="required">
+                            <option value="Dealer">Dealer</option>
+                            <option value="Individual">Individual</option>
+                        </select>
+                    </div><br>
+    
+                    <div class="row">
+                        
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Fuel type</label><br>
+                                <select name="Fuel_Type_Petrol" id="fuel" required="required" class="form-control" required="required">
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Diesel">CNG</option>
+                                </select>
+                            </div> 
+                        </div>
+                        <br>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Transmission type</label><br>
+                                <select name="Transmission_Manual" id="research" class="form-control" required="required">
+                                     <option value="Manual">Manual Car</option>
+                                     <option value="Automatic">Automatic Car</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button id="sub" type="submit" class="btn btn-block btn-warning" >Check Price</button> 
+                </form>
+                <h3>{{ prediction_text }}</h3>
+                <a href="./"><button id ="clear_button" type="button" >Clear</button></a>
+            </div>
+        </div>
+        
+    </div>
+
+    <style>
+        body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .background{
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/background.jpg");
+          height: 100%;
+          background-position:center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;
+          background-size: 100% 100%;
+      }
+      .heading{
+          text-align: center;
+          position: absolute;
+          top: 10%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+      }
+      .form{
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        width: 650px;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(10, 10, 10, 0.5);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        color: aliceblue;
+        text-align: center;
+      }
+      
+    </style>
+    
+</body>
